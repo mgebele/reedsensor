@@ -6,6 +6,10 @@ import signal
 # Set Broadcom mode so we can address GPIO pins by number.
 GPIO.setmode(GPIO.BCM)
 
+# This is the GPIO pin number we have one of the door sensor
+# wires attached to, the other should be attached to a ground
+DOOR_SENSOR_PIN = 18
+
 # Initially we don't know if the door sensor is open or closed...
 isOpen = None
 oldIsOpen = None
