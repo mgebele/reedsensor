@@ -72,10 +72,6 @@ while True:
 
     time.sleep(50)         # wait 30 seconds
 
-
-finally:                   # this block will run no matter how the try block exits
-    GPIO.cleanup()         # clean up after yourself
-
     # while True:
     #     reedOnePressDetected()
 
