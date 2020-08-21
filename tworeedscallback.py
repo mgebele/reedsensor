@@ -6,6 +6,7 @@ import signal
 # Initially we don't know if the door is open or closed...
 rightIsOpen = None
 oldIsOpen = None
+DOOR_SENSOR_PIN = 18
 
 
 def reedOnePressDetected():
