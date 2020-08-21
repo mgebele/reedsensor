@@ -24,9 +24,9 @@ def reedOneInRange(channel):
 
 def my_callback(channel):
     if GPIO.input(DOOR_SENSOR_PIN):     # if port 25 == 1
-        print("Rising edge detected")
+        print("DISconnected")
     else:                  # if port 25 != 1
-        print("Falling edge detected")
+        print("connected")
 
 
 # Set Broadcom mode so we can address GPIO pins by number.
