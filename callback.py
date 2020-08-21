@@ -8,8 +8,8 @@ rightIsOpen = None
 oldIsOpen = None
 DOOR_SENSOR_PIN = 18
 
-reed_disconnected = 0
-reed_connected = 0
+reed_disconnected_time = time.time()
+reed_connected_time = time.time()
 
 
 def reedOneInRange(channel):
