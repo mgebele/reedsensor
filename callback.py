@@ -23,10 +23,10 @@ def reedOneInRange(channel):
 
 
 def my_callback(channel):
-    if GPIO.input(25):     # if port 25 == 1
-        print("Rising edge detected on 25")
+    if GPIO.input(DOOR_SENSOR_PIN):     # if port 25 == 1
+        print("Rising edge detected")
     else:                  # if port 25 != 1
-        print("Falling edge detected on 25")
+        print("Falling edge detected")
 
 
 # Set Broadcom mode so we can address GPIO pins by number.
