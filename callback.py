@@ -51,8 +51,8 @@ GPIO.add_event_detect(RIGHT_DOOR_SENSOR_PIN, GPIO.BOTH,
 
 while True:
 
-    print("reed_connected sec", time.time()-reed_connected_time)
-    print("reed_disconnected sec", time.time()-reed_disconnected_time)
+    print("reed_connected sec", int(time.time()-reed_connected_time))
+    print("reed_disconnected sec", int(time.time()-reed_disconnected_time))
 
     if GPIO.input(DOOR_SENSOR_PIN):     # if port 25 == 1
         reed_connected_time = time.time()
