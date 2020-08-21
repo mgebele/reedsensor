@@ -57,7 +57,7 @@ GPIO.setup(RIGHT_DOOR_SENSOR_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.add_event_detect(RIGHT_DOOR_SENSOR_PIN, GPIO.BOTH,
                       callback=my_callback, bouncetime=300)
 
-try:
+while True:
     print(GPIO.input(DOOR_SENSOR_PIN))
     if GPIO.input(DOOR_SENSOR_PIN):     # if port 25 == 1
         reed_disconnected += 1
@@ -70,7 +70,7 @@ try:
             print("DOOR CLOSED")
             reed_disconnected = 0
 
-    time.sleep(30)         # wait 30 seconds
+    time.sleep(50)         # wait 30 seconds
 
 
 finally:                   # this block will run no matter how the try block exits
