@@ -4,12 +4,24 @@ import sys
 import signal
 
 
+def reedOnePressDetected():
+    oldIsOpen = rightIsOpen
+    rightIsOpen = GPIO.input(DOOR_SENSOR_PIN)
+    print(GPIO.input(DOOR_SENSOR_PIN))
+
+    if (rightIsOpen and (rightIsOpen != oldIsOpen)):
+        print("Space is unoccupied!")
+
+    elif (rightIsOpen != oldIsOpen):
+        print("Space is occupied!")
+
+
 # Set Broadcom mode so we can address GPIO pins by number.
 GPIO.setmode(GPIO.BCM)
 
 # Initially we don't know if the door is open or closed...
 rightIsOpen = None
-leftIsOpen = None
+oldIsOpen = None
 
 # This is the GPIO pin number we have one of the door sensor
 # wires attached to, the other should be attached to a ground
@@ -23,18 +35,6 @@ GPIO.add_event_detect(
     RIGHT_DOOR_SENSOR_PIN, GPIO.FALLING, callback=reedOnePressDetected, bouncetime=200)
 
 GPIO.add_event_callback(RIGHT_DOOR_SENSOR_PIN, reedOnePressDetected)
-
-
-def reedOnePressDetected():
-    oldIsOpen = isOpen
-    isOpen = GPIO.input(DOOR_SENSOR_PIN)
-    print(GPIO.input(DOOR_SENSOR_PIN))
-
-    if (isOpen and (isOpen != oldIsOpen)):
-        print("Space is unoccupied!")
-
-    elif (isOpen != oldIsOpen):
-        print("Space is occupied!")
 
 
 while True:
