@@ -23,7 +23,6 @@ def reedOnePressDetected():
 
 
 def buttonPressDetected(channel):
-
     if channel == DOOR_SENSOR_PIN:
         print("Button 0 works!")
 
@@ -39,6 +38,7 @@ RIGHT_DOOR_SENSOR_PIN = 18
 GPIO.setup(RIGHT_DOOR_SENSOR_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 # add rising edge detection on a channel, ignoring further edges for 200ms for switch bounce handling
+# falling means going from default 1 to 0 (=detected)
 GPIO.add_event_detect(RIGHT_DOOR_SENSOR_PIN, GPIO.FALLING, bouncetime=200)
 
 GPIO.add_event_callback(RIGHT_DOOR_SENSOR_PIN, buttonPressDetected)
