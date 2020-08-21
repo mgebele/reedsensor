@@ -32,20 +32,14 @@ while True:
 
     if (leftIsOpen and (leftIsOpen != leftOldIsOpen)):
         print("Left space is unoccupied!")
-        GPIO.output(LEFT_RED_LIGHT, False)
-        GPIO.output(LEFT_GREEN_LIGHT, True)
+
     elif (leftIsOpen != leftOldIsOpen):
         print("Left space is occupied!")
-        GPIO.output(LEFT_GREEN_LIGHT, False)
-        GPIO.output(LEFT_RED_LIGHT, True)
 
     if (rightIsOpen and (rightIsOpen != rightOldIsOpen)):
         print("Right space is unoccupied!")
-        GPIO.output(RIGHT_RED_LIGHT, False)
-        GPIO.output(RIGHT_GREEN_LIGHT, True)
+
     elif (rightIsOpen != rightOldIsOpen):
         print("Right space is occupied!")
-        GPIO.output(RIGHT_GREEN_LIGHT, False)
-        GPIO.output(RIGHT_RED_LIGHT, True)
 
     time.sleep(0.1)
