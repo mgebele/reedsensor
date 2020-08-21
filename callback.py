@@ -9,7 +9,7 @@ oldIsOpen = None
 DOOR_SENSOR_PIN = 18
 
 
-def reedOnePressDetected():
+def reedOnePressDetected(channel):
     global rightIsOpen
     oldIsOpen = rightIsOpen
     rightIsOpen = GPIO.input(DOOR_SENSOR_PIN)
@@ -39,7 +39,7 @@ GPIO.setup(RIGHT_DOOR_SENSOR_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 # add rising edge detection on a channel, ignoring further edges for 200ms for switch bounce handling
 # falling means going from default 1 to 0 (=detected)
 GPIO.add_event_detect(RIGHT_DOOR_SENSOR_PIN, GPIO.FALLING,
-                      callback=reedOnePressDetected, bouncetime=200)
+                      callback=reedOnePressDetected, bouncetime=300)
 
 # Main program loop
 try:
