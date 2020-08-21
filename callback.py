@@ -45,30 +45,30 @@ GPIO.setup(RIGHT_DOOR_SENSOR_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.add_event_detect(RIGHT_DOOR_SENSOR_PIN, GPIO.BOTH,
                       callback=reedOneInRange, bouncetime=300)
 
-try:
-    while True:
-        print("ok")
 
-        # while True:
-        #     reedOnePressDetected()
+while True:
+    print("ok")
 
-        # while True:
-        #     leftOldIsOpen = leftIsOpen
-        #     leftIsOpen = GPIO.input(LEFT_DOOR_SENSOR_PIN)
+    # while True:
+    #     reedOnePressDetected()
 
-        #     rightOldIsOpen = rightIsOpen
-        #     rightIsOpen = GPIO.input(RIGHT_DOOR_SENSOR_PIN)
+    # while True:
+    #     leftOldIsOpen = leftIsOpen
+    #     leftIsOpen = GPIO.input(LEFT_DOOR_SENSOR_PIN)
 
-        #     if (leftIsOpen and (leftIsOpen != leftOldIsOpen)):
-        #         print("Left space is unoccupied!")
+    #     rightOldIsOpen = rightIsOpen
+    #     rightIsOpen = GPIO.input(RIGHT_DOOR_SENSOR_PIN)
 
-        #     elif (leftIsOpen != leftOldIsOpen):
-        #         print("Left space is occupied!")
+    #     if (leftIsOpen and (leftIsOpen != leftOldIsOpen)):
+    #         print("Left space is unoccupied!")
 
-        #     if (rightIsOpen and (rightIsOpen != rightOldIsOpen)):
-        #         print("Right space is unoccupied!")
+    #     elif (leftIsOpen != leftOldIsOpen):
+    #         print("Left space is occupied!")
 
-        #     elif (rightIsOpen != rightOldIsOpen):
-        #         print("Right space is occupied!")
+    #     if (rightIsOpen and (rightIsOpen != rightOldIsOpen)):
+    #         print("Right space is unoccupied!")
 
-        #     time.sleep(0.1)
+    #     elif (rightIsOpen != rightOldIsOpen):
+    #         print("Right space is occupied!")
+
+    #     time.sleep(0.1)
