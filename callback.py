@@ -42,7 +42,7 @@ GPIO.setup(RIGHT_DOOR_SENSOR_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 # add rising edge detection on a channel, ignoring further edges for 200ms for switch bounce handling
 # falling means going from default 1 to 0 (=detected)
 GPIO.add_event_detect(RIGHT_DOOR_SENSOR_PIN, GPIO.BOTH,
-                      callback=my_callback, bouncetime=300)
+                      callback=my_callback, bouncetime=3000)
 
 try:
     time.sleep(30)         # wait 30 seconds
