@@ -58,6 +58,17 @@ GPIO.add_event_detect(RIGHT_DOOR_SENSOR_PIN, GPIO.BOTH,
                       callback=my_callback, bouncetime=300)
 
 try:
+    if GPIO.input(DOOR_SENSOR_PIN):     # if port 25 == 1
+        reed_disconnected += 1
+        if reed_disconnected > 5:
+            print("DOOR OPEN")
+            reed_connected = 0
+    else:                  # if port 25 != 1
+        reed_connected += 1
+        if reed_connected > 5:
+            print("DOOR CLOSED")
+            reed_disconnected = 0
+
     time.sleep(30)         # wait 30 seconds
 
 
