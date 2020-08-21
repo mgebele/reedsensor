@@ -45,8 +45,12 @@ GPIO.add_event_detect(RIGHT_DOOR_SENSOR_PIN, GPIO.BOTH,
                       callback=my_callback, bouncetime=300)
 
 
-while True:
-    print("ok")
+try:
+    sleep(30)         # wait 30 seconds
+
+
+finally:                   # this block will run no matter how the try block exits
+    GPIO.cleanup()         # clean up after yourself
 
     # while True:
     #     reedOnePressDetected()
