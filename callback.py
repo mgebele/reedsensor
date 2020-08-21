@@ -26,20 +26,11 @@ def reedOneInRange(channel):
 
 
 def my_callback(channel):
-    global reed_connected
-    global reed_disconnected
     if GPIO.input(DOOR_SENSOR_PIN):     # if port 25 == 1
-        print("DISconnected")
-        reed_disconnected += 1
-        if reed_disconnected > 5:
-            print("DOOR OPEN")
-            reed_connected = 0
+        print("FIRST DISconnected")
+
     else:                  # if port 25 != 1
-        print("connected")
-        reed_connected += 1
-        if reed_connected > 5:
-            print("DOOR CLOSED")
-            reed_disconnected = 0
+        print("FIRST connected")
 
 
 # Set Broadcom mode so we can address GPIO pins by number.
@@ -58,7 +49,9 @@ GPIO.add_event_detect(RIGHT_DOOR_SENSOR_PIN, GPIO.BOTH,
                       callback=my_callback, bouncetime=300)
 
 while True:
-    print(GPIO.input(DOOR_SENSOR_PIN))
+
+    print("reed_connected", reed_connected)
+    print("reed_disconnected", reed_disconnected)
 
     if GPIO.input(DOOR_SENSOR_PIN):     # if port 25 == 1
         reed_disconnected += 1
