@@ -44,9 +44,8 @@ GPIO.setup(RIGHT_DOOR_SENSOR_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.add_event_detect(RIGHT_DOOR_SENSOR_PIN, GPIO.BOTH,
                       callback=my_callback, bouncetime=300)
 
-
 try:
-    sleep(30)         # wait 30 seconds
+    time.sleep(30)         # wait 30 seconds
 
 
 finally:                   # this block will run no matter how the try block exits
