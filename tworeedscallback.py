@@ -3,6 +3,10 @@ import time
 import sys
 import signal
 
+# Initially we don't know if the door is open or closed...
+rightIsOpen = None
+oldIsOpen = None
+
 
 def reedOnePressDetected():
     oldIsOpen = rightIsOpen
@@ -19,9 +23,6 @@ def reedOnePressDetected():
 # Set Broadcom mode so we can address GPIO pins by number.
 GPIO.setmode(GPIO.BCM)
 
-# Initially we don't know if the door is open or closed...
-rightIsOpen = None
-oldIsOpen = None
 
 # This is the GPIO pin number we have one of the door sensor
 # wires attached to, the other should be attached to a ground
