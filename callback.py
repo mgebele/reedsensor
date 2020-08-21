@@ -9,7 +9,7 @@ oldIsOpen = None
 DOOR_SENSOR_PIN = 18
 
 
-def reedOnePressDetected(channel):
+def s(channel):
     global rightIsOpen
     oldIsOpen = rightIsOpen
     rightIsOpen = GPIO.input(DOOR_SENSOR_PIN)
@@ -22,8 +22,12 @@ def reedOnePressDetected(channel):
         print("Space is occupied!")
 
 
-def buttonPressDetected(channel):
-    print("Button 0 works!")
+def reedOneInRange(channel):
+    print("Space is occupied!")
+
+
+def reedOneOutOfRange(channel):
+    print("Space is unoccupied!")
 
 
 # Set Broadcom mode so we can address GPIO pins by number.
@@ -39,7 +43,10 @@ GPIO.setup(RIGHT_DOOR_SENSOR_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 # add rising edge detection on a channel, ignoring further edges for 200ms for switch bounce handling
 # falling means going from default 1 to 0 (=detected)
 GPIO.add_event_detect(RIGHT_DOOR_SENSOR_PIN, GPIO.FALLING,
-                      callback=reedOnePressDetected, bouncetime=300)
+                      callback=reedOneInRange, bouncetime=300)
+
+GPIO.add_event_detect(RIGHT_DOOR_SENSOR_PIN, GPIO.RISING,
+                      callback=reedOneOutOfRange, bouncetime=300)
 
 # Main program loop
 try:
