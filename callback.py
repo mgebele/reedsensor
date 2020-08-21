@@ -47,6 +47,7 @@ GPIO.add_event_detect(RIGHT_DOOR_SENSOR_PIN, GPIO.BOTH,
 
 try:
     while True:
+        print("ok")
 
         # while True:
         #     reedOnePressDetected()
