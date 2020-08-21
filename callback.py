@@ -26,6 +26,7 @@ def reedOneInRange(channel):
 
 
 def my_callback(channel):
+
     if GPIO.input(DOOR_SENSOR_PIN):     # if port 25 == 1
         print("FIRST DISconnected")
 
@@ -54,13 +55,16 @@ while True:
     print("reed_disconnected", reed_disconnected)
 
     if GPIO.input(DOOR_SENSOR_PIN):     # if port 25 == 1
-        reed_disconnected += 1
-        if reed_disconnected > 5:
+        reed_connected_time = time.time()
+        #reed_disconnected += 1
+        if reed_disconnected_time - time.time() > 3:
             print("DOOR OPEN")
             reed_connected = 0
     else:                  # if port 25 != 1
-        reed_connected += 1
-        if reed_connected > 5:
+        reed_disconnected_time = time.time()
+
+        #reed_connected += 1
+        if reed_connected_time - time.time() > 3:
             print("DOOR CLOSED")
             reed_disconnected = 0
 
