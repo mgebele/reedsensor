@@ -9,7 +9,7 @@ oldIsOpen = None
 DOOR_SENSOR_PIN = 18
 
 
-def s(channel):
+def reedOneInRange(channel):
     global rightIsOpen
     oldIsOpen = rightIsOpen
     rightIsOpen = GPIO.input(DOOR_SENSOR_PIN)
@@ -22,12 +22,12 @@ def s(channel):
         print("Space is occupied!")
 
 
-def reedOneInRange(channel):
-    print("Space is occupied!")
+# def reedOneInRange(channel):
+#     print("Space is occupied!")
 
 
-def reedOneOutOfRange(channel):
-    print("Space is unoccupied!")
+# def reedOneOutOfRange(channel):
+#     print("Space is unoccupied!")
 
 
 # Set Broadcom mode so we can address GPIO pins by number.
@@ -42,42 +42,32 @@ GPIO.setup(RIGHT_DOOR_SENSOR_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 # add rising edge detection on a channel, ignoring further edges for 200ms for switch bounce handling
 # falling means going from default 1 to 0 (=detected)
-GPIO.add_event_detect(RIGHT_DOOR_SENSOR_PIN, GPIO.FALLING,
+GPIO.add_event_detect(RIGHT_DOOR_SENSOR_PIN, GPIO.BOTH,
                       callback=reedOneInRange, bouncetime=300)
 
-GPIO.add_event_detect(RIGHT_DOOR_SENSOR_PIN, GPIO.RISING,
-                      callback=reedOneOutOfRange, bouncetime=300)
-
-# Main program loop
 try:
     while True:
-        time.sleep(1)
 
-# Scavenging work after the end of the program
-except KeyboardInterrupt:
-    GPIO.cleanup()
+        # while True:
+        #     reedOnePressDetected()
 
+        # while True:
+        #     leftOldIsOpen = leftIsOpen
+        #     leftIsOpen = GPIO.input(LEFT_DOOR_SENSOR_PIN)
 
-# while True:
-#     reedOnePressDetected()
+        #     rightOldIsOpen = rightIsOpen
+        #     rightIsOpen = GPIO.input(RIGHT_DOOR_SENSOR_PIN)
 
-# while True:
-#     leftOldIsOpen = leftIsOpen
-#     leftIsOpen = GPIO.input(LEFT_DOOR_SENSOR_PIN)
+        #     if (leftIsOpen and (leftIsOpen != leftOldIsOpen)):
+        #         print("Left space is unoccupied!")
 
-#     rightOldIsOpen = rightIsOpen
-#     rightIsOpen = GPIO.input(RIGHT_DOOR_SENSOR_PIN)
+        #     elif (leftIsOpen != leftOldIsOpen):
+        #         print("Left space is occupied!")
 
-#     if (leftIsOpen and (leftIsOpen != leftOldIsOpen)):
-#         print("Left space is unoccupied!")
+        #     if (rightIsOpen and (rightIsOpen != rightOldIsOpen)):
+        #         print("Right space is unoccupied!")
 
-#     elif (leftIsOpen != leftOldIsOpen):
-#         print("Left space is occupied!")
+        #     elif (rightIsOpen != rightOldIsOpen):
+        #         print("Right space is occupied!")
 
-#     if (rightIsOpen and (rightIsOpen != rightOldIsOpen)):
-#         print("Right space is unoccupied!")
-
-#     elif (rightIsOpen != rightOldIsOpen):
-#         print("Right space is occupied!")
-
-#     time.sleep(0.1)
+        #     time.sleep(0.1)
