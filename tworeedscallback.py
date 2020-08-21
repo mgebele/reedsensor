@@ -9,6 +9,7 @@ oldIsOpen = None
 
 
 def reedOnePressDetected():
+    global rightIsOpen
     oldIsOpen = rightIsOpen
     rightIsOpen = GPIO.input(DOOR_SENSOR_PIN)
     print(GPIO.input(DOOR_SENSOR_PIN))
