@@ -59,6 +59,7 @@ GPIO.add_event_detect(RIGHT_DOOR_SENSOR_PIN, GPIO.BOTH,
 
 while True:
     print(GPIO.input(DOOR_SENSOR_PIN))
+
     if GPIO.input(DOOR_SENSOR_PIN):     # if port 25 == 1
         reed_disconnected += 1
         if reed_disconnected > 5:
@@ -70,7 +71,7 @@ while True:
             print("DOOR CLOSED")
             reed_disconnected = 0
 
-    time.sleep(50)         # wait 30 seconds
+    # time.sleep(50)         # wait 30 seconds
 
     # while True:
     #     reedOnePressDetected()
