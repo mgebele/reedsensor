@@ -4,7 +4,9 @@ import sys
 import signal
 
 
-DOOR_SENSOR_PIN = [18, 12]
+DOOR_SENSOR_PIN = 18
+DOOR_SENSOR_PIN1 = 12
+DOOR_SENSOR_PIN2 = 2
 
 reed_door_open = True
 
@@ -24,9 +26,26 @@ reed_connected_time = time.time()
 # Set Broadcom mode so we can address GPIO pins by number.
 GPIO.setmode(GPIO.BCM)
 
+try:
 
-# Set up the door sensor pins.
-GPIO.setup(DOOR_SENSOR_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+    # Set up the door sensor pins.
+    GPIO.setup(DOOR_SENSOR_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+except:
+    print("DOOR_SENSOR_PIN error setup")
+
+try:
+
+    # Set up the door sensor pins.
+    GPIO.setup(DOOR_SENSOR_PIN1, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+except:
+    print("DOOR_SENSOR_PIN1 error setup")
+
+try:
+
+    # Set up the door sensor pins.
+    GPIO.setup(DOOR_SENSOR_PIN2, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+except:
+    print("DOOR_SENSOR_PIN2 error setup")
 
 # # add rising edge detection on a channel, ignoring further edges for 200ms for switch bounce handling
 # # falling means going from default 1 to 0 (=detected)
