@@ -22,12 +22,11 @@ def reedOneInRange(channel):
         print("Space is occupied!")
 
 
-# def reedOneInRange(channel):
-#     print("Space is occupied!")
-
-
-# def reedOneOutOfRange(channel):
-#     print("Space is unoccupied!")
+def my_callback(channel):
+    if GPIO.input(25):     # if port 25 == 1
+        print("Rising edge detected on 25")
+    else:                  # if port 25 != 1
+        print("Falling edge detected on 25")
 
 
 # Set Broadcom mode so we can address GPIO pins by number.
@@ -43,7 +42,7 @@ GPIO.setup(RIGHT_DOOR_SENSOR_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 # add rising edge detection on a channel, ignoring further edges for 200ms for switch bounce handling
 # falling means going from default 1 to 0 (=detected)
 GPIO.add_event_detect(RIGHT_DOOR_SENSOR_PIN, GPIO.BOTH,
-                      callback=reedOneInRange, bouncetime=300)
+                      callback=my_callback, bouncetime=300)
 
 
 while True:
