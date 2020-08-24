@@ -1,21 +1,19 @@
-import RPi.GPIO as gpio
-import time
+from time import sleep
+import RPi.GPIO as GPIO
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
 
-servo = 18
-gpio.setmode(gpio.BCM)
-gpio.setup(servo, gpio.OUT)
+def setServoAngle(servo, angle):
+	pwm = GPIO.PWM(servo, 50)
+	pwm.start(8)
+	dutyCycle = angle / 18. + 3.
+	pwm.ChangeDutyCycle(dutyCycle)
+	sleep(0.3)
+	pwm.stop()
 
-p = gpio.PWM(servo, 50)
-p.start(2.5)
-
-# 2.5 für 0°, 
-
-# 7.5 für 90° und 
-# 12.5 für 180°
-try:
-  while True:
-    p.ChangeDutyCycle(5.0)
-    time.sleep(1)
-
-except KeyboardInterrupt:
-  p.stop()
+if __name__ == '__main__':
+	import sys
+	servo = int(sys.argv[1])
+	GPIO.setup(servo, GPIO.OUT)
+	setServoAngle(servo, 45)
+	GPIO.cleanup()
