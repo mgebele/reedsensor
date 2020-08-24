@@ -16,7 +16,7 @@ try:
   while True:
     p.ChangeDutyCycle(5.0)
     time.sleep(1)
-    p.ChangeDutyCycle(5.0)
+    p.ChangeDutyCycle(-5.0)
     time.sleep(1)
 except KeyboardInterrupt:
   p.stop()
