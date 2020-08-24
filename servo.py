@@ -20,7 +20,7 @@ def setServoAngle(servo, angle):
 # goes 45 degree in one direction and back
 try:
   while True:
-    setServoAngle(servo,20)
+    setServoAngle(servo,30)
     time.sleep(1)
     setServoAngle(servo,0)
 except KeyboardInterrupt:
