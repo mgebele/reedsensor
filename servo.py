@@ -15,5 +15,15 @@ if __name__ == '__main__':
 	import sys
 	servo = 18
 	GPIO.setup(servo, GPIO.OUT)
-	setServoAngle(servo, 45)
-	GPIO.cleanup()
+
+    try:
+        while True:
+            setServoAngle(servo, 45)
+            time.sleep(1)
+            setServoAngle(servo, 0)
+            time.sleep(1)
+
+    except KeyboardInterrupt:
+        GPIO.cleanup()
+        p.stop()
+        
