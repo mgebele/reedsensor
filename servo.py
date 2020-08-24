@@ -9,15 +9,13 @@ def setServoAngle(servo, angle):
 	dutyCycle = angle / 18. + 3.
 	pwm.ChangeDutyCycle(dutyCycle)
 	time.sleep(0.3)
-	pwm.stop()
+
 
 
 servo = 18
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(servo, GPIO.OUT)
 
-p = GPIO.PWM(servo, 50)
-p.start(2.5)
 
 try:
   while True:
@@ -25,7 +23,7 @@ try:
     time.sleep(1)
     setServoAngle(servo,0)
 except KeyboardInterrupt:
-  p.stop()
+  PWM.stop()
   GPIO.cleanup()
 
 
