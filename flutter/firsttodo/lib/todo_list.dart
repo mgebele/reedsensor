@@ -10,7 +10,7 @@ class _TodoListState extends State<TodoList> {
   List<Todo> todos = [
     Todo(title: 'Learn Dart'),
     Todo(title: 'dghd'),
-    Todo(title: 'Be amazed'),
+    Todo(title: 'asdlkasd'),
   ];
 
   _toggleTodo(Todo todo, bool isChecked) {
